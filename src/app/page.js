@@ -109,7 +109,9 @@ const App = () => {
 			onMouseEnter: () => handleMouseEnter(item.key),
 			onMouseLeave: handleMouseLeave,
 			style: {
-				height: "50px",
+				height: "48px",
+				width: "200px",
+				margin: "0 auto",
 				backgroundColor:
 					item.key === selectedKey
 						? "#4880FF"
@@ -123,6 +125,9 @@ const App = () => {
 						? "#202224"
 						: "#202224",
 				transition: "background-color 0.3s, color 0.3s",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
 			},
 		};
 	});
