@@ -2,12 +2,13 @@
 import { Nunito_Sans } from "next/font/google";
 import Image from "next/image";
 import React, { useState } from "react";
-import { Button, Layout, Menu, theme, Flex, Tooltip } from "antd";
+import { Button, Layout, Menu, theme, Flex, Tooltip, Input, Space } from "antd";
 import "@ant-design/v5-patch-for-react-19";
 import {
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
 	SearchOutlined,
+	AudioOutlined,
 } from "@ant-design/icons";
 import {
 	AddressBookIcon,
@@ -27,7 +28,19 @@ import {
 	UsersIcon,
 } from "react-line-awesome";
 
+const { Search } = Input;
+const suffix = (
+	<AudioOutlined
+		style={{
+			fontSize: 16,
+			color: "#4880FF",
+		}}
+	/>
+);
+const onSearch = (value, _e, info) => console.log(info?.source, value);
+
 const { Sider, Header, Content } = Layout;
+
 const siderStyle = {
 	overflow: "auto",
 	height: "100vh",
@@ -165,30 +178,32 @@ const App = () => {
 						padding: 0,
 						background: colorBgContainer,
 					}}>
-					<Button
-						type="text"
-						icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-						onClick={() => setCollapsed(!collapsed)}
-						style={{
-							fontSize: "16px",
-							width: 64,
-							height: 64,
-						}}
-					/>
-					<Button
-						icon={<SearchOutlined />}
-						type="text"
-						iconPosition="start"
-						style={{
-							borderRadius: "19px",
-							width: 388,
-							height: 38,
-							color: "#D5D5D5",
-							backgroundColor: "#F5F6FA",
-							justifyContent: "left",
-						}}>
-						Search...
-					</Button>
+					<div style={{ display: "flex", alignItems: "center" }}>
+						<Button
+							type="text"
+							icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+							onClick={() => setCollapsed(!collapsed)}
+							style={{
+								fontSize: "16px",
+								width: 64,
+								height: 64,
+							}}
+						/>
+						<Search
+							placeholder="Search..."
+							onSearch={onSearch}
+							enterButton
+							style={{
+								width: 388,
+								height: 38,
+								borderRadius: 19,
+								color: "#D5D5D5",
+								marginLeft: 16,
+								marginTop: 6,
+								fontWeight: 600,
+							}}
+						/>
+					</div>
 				</Header>
 				<Content
 					style={{
