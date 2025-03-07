@@ -34,7 +34,6 @@ const siderStyle = {
 	scrollbarGutter: "stable",
 	backgroundColor: "#fff",
 	color: "#202224",
-	width: 250,
 };
 
 const logoStyle = {
@@ -109,9 +108,7 @@ const App = () => {
 			onMouseEnter: () => handleMouseEnter(item.key),
 			onMouseLeave: handleMouseLeave,
 			style: {
-				height: "48px",
-				width: "200px",
-				margin: "0 auto",
+				height: "50px",
 				backgroundColor:
 					item.key === selectedKey
 						? "#4880FF"
@@ -125,9 +122,6 @@ const App = () => {
 						? "#202224"
 						: "#202224",
 				transition: "background-color 0.3s, color 0.3s",
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
 			},
 		};
 	});
@@ -138,8 +132,7 @@ const App = () => {
 				trigger={null}
 				collapsible
 				collapsed={collapsed}
-				style={siderStyle}
-				width={250}>
+				style={siderStyle}>
 				{!collapsed && (
 					<div style={logoStyle}>
 						<Image
@@ -163,8 +156,6 @@ const App = () => {
 					style={{
 						padding: 0,
 						background: colorBgContainer,
-						display: "flex",
-						alignItems: "center",
 					}}>
 					<Button
 						type="text"
@@ -172,11 +163,8 @@ const App = () => {
 						onClick={() => setCollapsed(!collapsed)}
 						style={{
 							fontSize: "16px",
-							width: 32,
-							height: 48,
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
+							width: 64,
+							height: 64,
 						}}
 					/>
 				</Header>
@@ -187,7 +175,9 @@ const App = () => {
 						minHeight: 280,
 						background: colorBgContainer,
 						borderRadius: borderRadiusLG,
-					}}></Content>
+					}}>
+					Content
+				</Content>
 			</Layout>
 		</Layout>
 	);
