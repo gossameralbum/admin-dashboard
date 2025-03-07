@@ -2,8 +2,13 @@
 import { Nunito_Sans } from "next/font/google";
 import Image from "next/image";
 import React, { useState } from "react";
-import { Button, Layout, Menu, theme } from "antd";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Button, Layout, Menu, theme, Flex, Tooltip } from "antd";
+import "@ant-design/v5-patch-for-react-19";
+import {
+	MenuFoldOutlined,
+	MenuUnfoldOutlined,
+	SearchOutlined,
+} from "@ant-design/icons";
 import {
 	AddressBookIcon,
 	CalendarAltIcon,
@@ -170,6 +175,7 @@ const App = () => {
 							height: 64,
 						}}
 					/>
+					<Button icon={<SearchOutlined />}>Search</Button>
 				</Header>
 				<Content
 					style={{
