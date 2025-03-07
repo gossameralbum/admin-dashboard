@@ -34,6 +34,7 @@ const siderStyle = {
 	scrollbarGutter: "stable",
 	backgroundColor: "#fff",
 	color: "#202224",
+	width: 300, // Increase the width of the Sider
 };
 
 const logoStyle = {
@@ -108,7 +109,8 @@ const App = () => {
 			onMouseEnter: () => handleMouseEnter(item.key),
 			onMouseLeave: handleMouseLeave,
 			style: {
-				height: "50px",
+				height: "48px",
+				width: "90%",
 				backgroundColor:
 					item.key === selectedKey
 						? "#4880FF"
@@ -122,6 +124,7 @@ const App = () => {
 						? "#202224"
 						: "#202224",
 				transition: "background-color 0.3s, color 0.3s",
+				alignItems: "center",
 			},
 		};
 	});
