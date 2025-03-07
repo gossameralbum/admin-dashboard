@@ -1,13 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+const nunitoSans = Nunito_Sans({
+	variable: "--font-nunito-sans",
 	subsets: ["latin"],
 });
 
@@ -18,11 +13,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en">
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				{children}
-			</body>
+		<html
+			lang="en"
+			suppressHydrationWarning
+			className={nunitoSans.variable}>
+			<head>
+				<link
+					rel="stylesheet"
+					href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+				/>
+			</head>
+			<body className="antialiased">{children}</body>
 		</html>
 	);
 }

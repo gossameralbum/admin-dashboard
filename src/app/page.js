@@ -1,23 +1,23 @@
 "use client";
-
+import { Nunito_Sans } from "next/font/google";
+import Image from "next/image";
 import React from "react";
 import {
-	UserOutlined,
-	VideoCameraOutlined,
-	UploadOutlined,
+	AppstoreOutlined,
 	BarChartOutlined,
 	CloudOutlined,
-	AppstoreOutlined,
-	TeamOutlined,
 	ShopOutlined,
+	TeamOutlined,
+	UploadOutlined,
+	UserOutlined,
+	VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 
 const { Sider } = Layout;
 const siderStyle = {
 	overflow: "auto",
-	height: "1070px",
-	width: "240px",
+	height: "100vh",
 	position: "sticky",
 	insetInlineStart: 0,
 	top: 0,
@@ -27,31 +27,35 @@ const siderStyle = {
 };
 
 const items = [
-	UserOutlined,
-	VideoCameraOutlined,
-	UploadOutlined,
-	BarChartOutlined,
-	CloudOutlined,
-	AppstoreOutlined,
-	TeamOutlined,
-	ShopOutlined,
-].map((icon, index) => ({
+	{ icon: UserOutlined, label: "User" },
+	{ icon: VideoCameraOutlined, label: "Video Camera" },
+	{ icon: UploadOutlined, label: "Upload" },
+	{ icon: BarChartOutlined, label: "Bar Chart" },
+	{ icon: CloudOutlined, label: "Cloud" },
+	{ icon: AppstoreOutlined, label: "App Store" },
+	{ icon: TeamOutlined, label: "Team" },
+	{ icon: ShopOutlined, label: "Shop" },
+].map((item, index) => ({
 	key: String(index + 1),
-	icon: React.createElement(icon),
-	label: `nav ${index + 1}`,
+	icon: React.createElement(item.icon),
+	label: item.label,
 }));
+
+const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 
 const App = () => {
 	return (
-		<Sider style={siderStyle}>
-			<div className="demo-logo-vertical" />
-			<Menu
-				theme="dark"
-				mode="inline"
-				defaultSelectedKeys={["4"]}
-				items={items}
-			/>
-		</Sider>
+		<main className={nunitoSans.className}>
+			<Sider style={siderStyle}>
+				<div className="demo-logo-vertical" />
+				<Menu
+					theme="dark"
+					mode="inline"
+					defaultSelectedKeys={["4"]}
+					items={items}
+				/>
+			</Sider>
+		</main>
 	);
 };
 
