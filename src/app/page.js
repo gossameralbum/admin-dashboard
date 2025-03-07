@@ -39,7 +39,7 @@ const siderStyle = {
 	scrollbarGutter: "stable",
 	backgroundColor: "#fff",
 	color: "#202224",
-	width: 300, // Increase the width of the Sider
+	width: 300,
 };
 
 const logoStyle = {
@@ -175,7 +175,20 @@ const App = () => {
 							height: 64,
 						}}
 					/>
-					<Button icon={<SearchOutlined />}>Search</Button>
+					<Button
+						icon={<SearchOutlined />}
+						type="text"
+						iconPosition="start"
+						style={{
+							borderRadius: "19px",
+							width: 388,
+							height: 38,
+							color: "#D5D5D5",
+							backgroundColor: "#F5F6FA",
+							justifyContent: "left",
+						}}>
+						Search...
+					</Button>
 				</Header>
 				<Content
 					style={{
