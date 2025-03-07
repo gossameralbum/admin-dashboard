@@ -2,7 +2,8 @@
 import { Nunito_Sans } from "next/font/google";
 import Image from "next/image";
 import React, { useState } from "react";
-import { Layout, Menu } from "antd";
+import { Button, Layout, Menu, theme } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import {
 	AddressBookIcon,
 	CalendarAltIcon,
@@ -21,7 +22,7 @@ import {
 	UsersIcon,
 } from "react-line-awesome";
 
-const { Sider } = Layout;
+const { Sider, Header, Content } = Layout;
 const siderStyle = {
 	overflow: "auto",
 	height: "100vh",
@@ -40,6 +41,11 @@ const logoStyle = {
 	justifyContent: "center",
 	alignItems: "center",
 	margin: "20px 0",
+	position: "sticky",
+	top: 0,
+	zIndex: 1,
+	backgroundColor: "#fff",
+	height: "64px",
 };
 
 const dividerStyle = {
@@ -73,6 +79,10 @@ const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 const App = () => {
 	const [selectedKey, setSelectedKey] = useState("4");
 	const [hoveredKey, setHoveredKey] = useState(null);
+	const [collapsed, setCollapsed] = useState(false);
+	const {
+		token: { colorBgContainer, borderRadiusLG },
+	} = theme.useToken();
 
 	const handleSelect = ({ key }) => {
 		setSelectedKey(key);
@@ -117,16 +127,22 @@ const App = () => {
 	});
 
 	return (
-		<main className={nunitoSans.className}>
-			<Sider style={siderStyle}>
-				<div style={logoStyle}>
-					<Image
-						src="/dashlogo.svg"
-						alt="Dashboard Logo"
-						width={100}
-						height={100}
-					/>
-				</div>
+		<Layout>
+			<Sider
+				trigger={null}
+				collapsible
+				collapsed={collapsed}
+				style={siderStyle}>
+				{!collapsed && (
+					<div style={logoStyle}>
+						<Image
+							src="/dashlogo.svg"
+							alt="Dashboard Logo"
+							width={100}
+							height={100}
+						/>
+					</div>
+				)}
 				<Menu
 					mode="inline"
 					defaultSelectedKeys={[selectedKey]}
@@ -135,7 +151,35 @@ const App = () => {
 					style={{ color: "#202224" }}
 				/>
 			</Sider>
-		</main>
+			<Layout>
+				<Header
+					style={{
+						padding: 0,
+						background: colorBgContainer,
+					}}>
+					<Button
+						type="text"
+						icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+						onClick={() => setCollapsed(!collapsed)}
+						style={{
+							fontSize: "16px",
+							width: 64,
+							height: 64,
+						}}
+					/>
+				</Header>
+				<Content
+					style={{
+						margin: "24px 16px",
+						padding: 24,
+						minHeight: 280,
+						background: colorBgContainer,
+						borderRadius: borderRadiusLG,
+					}}>
+					Content
+				</Content>
+			</Layout>
+		</Layout>
 	);
 };
 
