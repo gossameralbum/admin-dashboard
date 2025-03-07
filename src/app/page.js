@@ -34,6 +34,7 @@ const siderStyle = {
 	scrollbarGutter: "stable",
 	backgroundColor: "#fff",
 	color: "#202224",
+	width: 250,
 };
 
 const logoStyle = {
@@ -132,7 +133,8 @@ const App = () => {
 				trigger={null}
 				collapsible
 				collapsed={collapsed}
-				style={siderStyle}>
+				style={siderStyle}
+				width={250}>
 				{!collapsed && (
 					<div style={logoStyle}>
 						<Image
@@ -156,6 +158,8 @@ const App = () => {
 					style={{
 						padding: 0,
 						background: colorBgContainer,
+						display: "flex",
+						alignItems: "center",
 					}}>
 					<Button
 						type="text"
@@ -163,8 +167,11 @@ const App = () => {
 						onClick={() => setCollapsed(!collapsed)}
 						style={{
 							fontSize: "16px",
-							width: 64,
-							height: 64,
+							width: 32,
+							height: 48,
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
 						}}
 					/>
 				</Header>
@@ -175,9 +182,7 @@ const App = () => {
 						minHeight: 280,
 						background: colorBgContainer,
 						borderRadius: borderRadiusLG,
-					}}>
-					Content
-				</Content>
+					}}></Content>
 			</Layout>
 		</Layout>
 	);
